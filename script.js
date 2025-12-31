@@ -8,9 +8,19 @@ const sentences = [
 let startTime, endTime;
 
 function startTest() {
-    startTime = new Date();
-    document.getElementById("inputText").value = "";
+  startTime = new Date();
+
+  // pick random sentence
+  const randomIndex = Math.floor(Math.random() * sentences.length);
+  const selectedSentence = sentences[randomIndex];
+
+  // show sentence on top
+  document.getElementById("text").innerText = selectedSentence;
+
+  // clear typing area
+  document.getElementById("inputText").value = "";
 }
+
 
 function endTest() {
     endTime = new Date();
@@ -35,4 +45,5 @@ function endTest() {
     document.getElementById("speed").innerText = "Typing Speed: " + speed + " WPM";
     document.getElementById("accuracy").innerText = "Accuracy: " + accuracy + "%";
 }
+
 
