@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Typing Speed Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Typing Speed Test</h1>
+
+    <p id="text">
+        The quick brown fox jumps over the lazy dog.
+    </p>
+
+    <textarea id="inputText" placeholder="Start typing here..."></textarea>
+
+    <button onclick="startTest()">Start</button>
+    <button onclick="endTest()">Finish</button>
+
+    <div class="result">
+        <p id="time"></p>
+        <p id="speed"></p>
+        <p id="accuracy"></p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
