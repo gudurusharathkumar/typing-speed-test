@@ -1,3 +1,10 @@
+const sentences = [
+  "Software development is a continuous learning process that requires practice and patience.",
+  "Typing speed tests improve accuracy and build confidence through regular practice.",
+  "JavaScript allows developers to create interactive and dynamic web applications.",
+  "Consistency and discipline are essential to succeed in the technology industry.",
+  "Practicing typing daily improves speed, focus, and muscle memory."
+];
 let startTime, endTime;
 
 function startTest() {
@@ -28,3 +35,4 @@ function endTest() {
     document.getElementById("speed").innerText = "Typing Speed: " + speed + " WPM";
     document.getElementById("accuracy").innerText = "Accuracy: " + accuracy + "%";
 }
+
