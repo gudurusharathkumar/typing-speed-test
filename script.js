@@ -5,46 +5,55 @@ const sentences = [
   "Consistency and discipline are essential to succeed in the technology industry.",
   "Practicing typing daily improves speed, focus, and muscle memory."
 ];
+
 let startTime, endTime;
 
 function startTest() {
-  startTime = new Date();
+  // pick random sentence
+  const randomIndex = Math.floor(Math.random() * sentences.length);
+  const selectedSentence = sentences[randomIndex];
 
-  document.getElementById("text").innerText =
-    sentences[Math.floor(Math.random() * sentences.length)];
+  // show sentence on screen
+  document.getElementById("text").innerText = selectedSentence;
 
+  // reset input & results
   document.getElementById("inputText").value = "";
-
   document.getElementById("time").innerText = "";
   document.getElementById("speed").innerText = "";
   document.getElementById("accuracy").innerText = "";
+
+  // start timer
+  startTime = new Date();
 }
-
-
 
 function endTest() {
-    endTime = new Date();
+  endTime = new Date();
 
-    let totalTime = (endTime - startTime) / 1000; // seconds
-    let typedText = document.getElementById("inputText").value;
-    let referenceText = document.getElementById("text").innerText;
+  const totalTime = (endTime - startTime) / 1000; // seconds
+  const typedText = document.getElementById("inputText").value.trim();
+  const referenceText = document.getElementById("text").innerText.trim();
 
-    let wordCount = typedText.trim().split(" ").length;
-    let speed = Math.round((wordCount / totalTime) * 60);
+  if (typedText.length === 0 || referenceText.length === 0) {
+    alert("Please click Start and type the sentence.");
+    return;
+  }
 
-    let correctChars = 0;
-    for (let i = 0; i < typedText.length; i++) {
-        if (typedText[i] === referenceText[i]) {
-            correctChars++;
-        }
+  const wordCount = typedText.split(/\s+/).length;
+  const speed = Math.round((wordCount / totalTime) * 60);
+
+  let correctChars = 0;
+  for (let i = 0; i < typedText.length; i++) {
+    if (typedText[i] === referenceText[i]) {
+      correctChars++;
     }
+  }
 
-    let accuracy = Math.round((correctChars / referenceText.length) * 100);
+  const accuracy = Math.round((correctChars / referenceText.length) * 100);
 
-    document.getElementById("time").innerText = "Time Taken: " + totalTime + " seconds";
-    document.getElementById("speed").innerText = "Typing Speed: " + speed + " WPM";
-    document.getElementById("accuracy").innerText = "Accuracy: " + accuracy + "%";
+  document.getElementById("time").innerText =
+    "Time Taken: " + totalTime.toFixed(2) + " seconds";
+  document.getElementById("speed").innerText =
+    "Typing Speed: " + speed + " WPM";
+  document.getElementById("accuracy").innerText =
+    "Accuracy: " + accuracy + "%";
 }
-
-
-
